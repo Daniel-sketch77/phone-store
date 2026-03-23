@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | PixelGrid</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-container">
+        <h1 class="logo" onclick="window.location.href='index.html'" style="cursor:pointer;">Phone Store</h1>
+        
+        <div class="nav-links-wrapper" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="catalog.html">Products</a>
+				<a href="contact.html">Contact</a>
+        </div>
+
+        <div class="nav-icons" style="display: flex; align-items: center; gap: 15px;">
+            <div class="search-container">
+                <input type="text" placeholder="Search..." onkeyup="handleLiveSearch(this.value)">
+                <div id="searchDropdown" class="search-dropdown"></div>
+            </div>
+            
+            <div class="nav-icons" style="display: flex; align-items: center; gap: 15px;">
+    <div class="cart-icon" onclick="toggleCart()" style="cursor: pointer; position: relative;">
+        <i class="fa-solid fa-bag-shopping" style="font-size: 1.2rem;"></i>
+        <span id="cart-count" class="badge">0</span>
+    </div>
+
+    <div class="menu-toggle" onclick="toggleMobileMenu()" style="cursor: pointer;">
+        <i class="fa-solid fa-bars" style="font-size: 1.2rem;"></i>
+    </div>
+</div>
+        </div>
+    </div>
+</nav>
+
+    <main class="contact-main">
+        <div class="contact-container">
+            <h2>Contact Us</h2>
+            <p>Have questions about our store or a device? Reach out to our team.</p>
+            
+            <form id="whatsappContactForm" class="contact-form">
+    <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="contactName" placeholder="John Doe" required>
+    </div>
+    
+    <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="contactEmail" placeholder="john@example.com" required>
+    </div>
+    
+    <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="contactMessage" rows="5" placeholder="How can we help?" required></textarea>
+    </div>
+    
+    <button type="submit" class="submit-btn">
+        <i class="fa-brands fa-whatsapp"></i> Send via WhatsApp
+    </button>
+</form>
+        </div>
+    </main>
+
+    <footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col brand-col">
+                <h2 class="footer-logo">Phone Store</h2>
+                <p>Experience the future of mobile technology with our curated collection of premium devices.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="catalog.html?brand=iPhone">iPhone</a></li>
+                    <li><a href="catalog.html?brand=Samsung">Samsung</a></li>
+                    <li><a href="catalog.html?brand=Google">Google</a></li>
+                    <li><a href="catalog.html?brand=Wearable">Accessories</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col newsletter-col">
+                <h4>Stay Updated</h4>
+                <p>Subscribe to get notified about new releases and exclusive offers.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Email address" required>
+                    <button type="submit">Join</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-copy">
+                &copy; 2026 Phone Store.
+            </div>
+            <div class="footer-legal">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+	 <div id="toastNotification" class="toast"></div>
+
+	 <div id="cartSidebar" class="cart-sidebar">
+    <div class="cart-header">
+        <h3>Your Bag</h3>
+        <button class="close-btn" onclick="toggleCart()"><i class="fa-solid fa-xmark" style="font-size: 1.2rem;"></i></button>
+    </div>
+    
+    <div id="cartItems" class="cart-items-container">
+        </div>
+
+    <div class="cart-footer">
+        <div class="cart-total">
+            <span>Total:</span>
+            <span id="cartTotalValue">$0.00</span>
+        </div>
+		  
+		  
+    <button onclick="clearCart()" class="clear-btn" style="">
+        Clear Bag
+    </button>
+    
+    <button class="btn-whatsapp" onclick="checkoutWhatsApp()">
+        <i class="fa-brands fa-whatsapp" style="font-size: 1.2rem;"></i>
+        Order via WhatsApp
+    </button>
+
+        <button class="checkout-btn" onclick="alert('Proceeding to Checkout...')">Checkout</button>
+    </div>
+</div>
+<div id="cartOverlay" class="cart-overlay" onclick="toggleCart()"></div>
+<div id="clearCartModal" class="modal-overlay">
+    <div class="modal-content">
+        <i class="fa-solid fa-trash-can" style="font-size: 40px; color: #ff3b30; margin-bottom: 15px;"></i>
+        <h3>Empty your bag?</h3>
+        <p>This will remove all items from your current selection.</p>
+        <div class="modal-btns">
+            <button class="btn-cancel" onclick="closeClearModal()">Cancel</button>
+            <button class="btn-confirm-delete" onclick="executeClearCart()">Clear Bag</button>
+        </div>
+    </div>
+</div>
+    <script src="script.js"></script>
+</body>
+</html>
