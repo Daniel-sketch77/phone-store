@@ -1775,7 +1775,7 @@ button{
         display: grid !important;
         grid-template-columns: 1fr !important; /* Forces 1 item per row */
         gap: 30px !important; /* Adds professional spacing between big cards */
-        padding: 70px !important; /* Breathing room so it's not literally touching the glass */
+        padding: 20px !important; /* Breathing room so it's not literally touching the glass */
         width: 100% !important;
     }
 
