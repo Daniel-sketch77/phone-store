@@ -1775,7 +1775,7 @@ button{
         display: grid !important;
         grid-template-columns: 1fr !important; /* Forces 1 item per row */
         gap: 30px !important; /* Adds professional spacing between big cards */
-        padding: 0 20px !important; /* Breathing room so it's not literally touching the glass */
+        padding: 70px !important; /* Breathing room so it's not literally touching the glass */
         width: 100% !important;
     }
 
@@ -1794,8 +1794,12 @@ button{
 
     /* 4. Ensure the container isn't restricting the width */
     .container {
-        padding-left: 0 !important;
-        padding-right: 0 !important;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
         width: 100% !important;
     }
+}
+
+.hero-image img{
+	 width:70%
 }
