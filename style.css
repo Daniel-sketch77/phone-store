@@ -1767,3 +1767,35 @@ button{
         height: 180px; /* Uniform height for a clean grid */
     }
 }
+
+@media (max-width: 576px) {
+    /* 1. Force the grid to be one single column */
+    #product-grid, 
+    .product-grid {
+        display: grid !important;
+        grid-template-columns: 1fr !important; /* Forces 1 item per row */
+        gap: 30px !important; /* Adds professional spacing between big cards */
+        padding: 0 20px !important; /* Breathing room so it's not literally touching the glass */
+        width: 100% !important;
+    }
+
+    /* 2. Make the card fill the whole width */
+    .product-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 auto !important;
+    }
+
+    /* 3. Make the image box taller to look better in a wide card */
+    .product-image-box {
+        height: 320px !important; /* Makes the placeholder gallery look like a large poster */
+        width: 100% !important;
+    }
+
+    /* 4. Ensure the container isn't restricting the width */
+    .container {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        width: 100% !important;
+    }
+}
