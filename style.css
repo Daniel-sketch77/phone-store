@@ -1833,3 +1833,78 @@ button{
 .btn-whatsapp:active {
     transform: scale(0.95);
 }
+
+.trust-bar {
+    padding: 60px 0;
+    background-color: #ffffff;
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.trust-wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.trust-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    transition: transform 0.3s ease;
+}
+
+/* Lively Hover Effect for Client Demo */
+.trust-item:hover {
+    transform: translateY(-5px);
+}
+
+.trust-icon {
+    width: 50px;
+    height: 50px;
+    background: #f5f5f7; /* Light Apple-style grey */
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    color: #0071e3; /* Premium Blue */
+    font-size: 1.4rem;
+}
+
+.trust-text h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1d1d1f;
+    margin-bottom: 8px;
+}
+
+.trust-text p {
+    font-size: 0.9rem;
+    color: #86868b;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Mobile Responsiveness: Edge-to-Edge Single Column */
+@media (max-width: 768px) {
+    .trust-wrapper {
+        grid-template-columns: 1fr; /* Single column on mobile for "Busy" feel */
+        gap: 10px;
+        padding: 0 20px;
+    }
+    
+    .trust-item {
+        flex-direction: row; /* Horizontal layout on mobile to save vertical space */
+        align-items: center;
+        gap: 20px;
+        background: #fbfbfd;
+        border-radius: 15px;
+        margin-bottom: 10px;
+    }
+    
+    .trust-icon {
+        margin-bottom: 0;
+        min-width: 50px;
+    }
+}
