@@ -46,7 +46,15 @@ function renderGallery(products) {
     const container = document.getElementById('product-grid');
     if (!container) return;
 
-    container.innerHTML = products.map(p => `
+    // Set the client's phone number here (e.g., 234 for Nigeria + number)
+    const sellerPhone = "2349015177495"; 
+
+    container.innerHTML = products.map(p => {
+        // Create the pre-filled message for the specific phone
+        const message = `Hello! I am interested in the *${p.name}* priced at *₦${p.price.toLocaleString()}*. Is it still available?`;
+        const whatsappLink = `https://wa.me/${sellerPhone}?text=${encodeURIComponent(message)}`;
+
+        return `
         <div class="product-card">
             <div class="product-image-box" onclick="window.location.href='product.html?id=${p.id}'">
                 <img src="${p.image}" alt="${p.name}" loading="lazy">
@@ -62,18 +70,19 @@ function renderGallery(products) {
                 </div>
                 
                 <div class="card-buttons">
-                    <button class="add-to-cart-btn" onclick="addToCart(${p.id}, '${p.name}', ${p.price}, '${p.image}')">
-                        Add to Bag
-                    </button>
+                    <a href="${whatsappLink}" target="_blank" class="btn-whatsapp">
+                        <i class="fa-brands fa-whatsapp"></i> Order on WhatsApp
+                    </a>
+                    
                     <button class="view-product-btn" onclick="window.location.href='product.html?id=${p.id}'">
                         View Details
                     </button>
                 </div>
             </div>
         </div>
-    `).join('');
+        `;
+    }).join('');
 }
-
 document.addEventListener('DOMContentLoaded', () => {
     const productGrid = document.getElementById('product-grid');
     if (!productGrid) return;
